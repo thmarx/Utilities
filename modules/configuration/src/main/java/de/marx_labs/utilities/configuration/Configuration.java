@@ -28,6 +28,8 @@ public class Configuration extends HashMap<String, Object> {
 
 	private static final Logger logger = LoggerFactory.getLogger(Configuration.class);
 
+    private Properties properties;
+    
 	public static Configuration newInstance(){
 		return new Configuration();
 	}
@@ -37,10 +39,10 @@ public class Configuration extends HashMap<String, Object> {
 		Configuration context = new Configuration();
 		
 		if (configfile != null) {
-			Properties properties = Properties2.loadProperties(configfile);
+			context.properties = Properties2.loadProperties(configfile);
 
-			for (final String name : properties.stringPropertyNames()) {
-				context.put(name, properties.getProperty(name));
+			for (final String name : context.properties.stringPropertyNames()) {
+				context.put(name, context.properties.getProperty(name));
 			}
 		}
 

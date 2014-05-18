@@ -34,6 +34,7 @@
         <module>modules/thirdparty</module>
         <module>modules/common</module>
         <module>modules/configuration</module>
+        <module>modules/collection</module>
         <module>modules/mongodb</module>
         <module>modules/cache/api</module>
         <module>modules/cache/memcache</module>
