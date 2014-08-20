@@ -16,6 +16,13 @@ import java.util.concurrent.RecursiveAction;
  */
 
 public class MergeSortForkJoin {
+	
+	public static <T extends Comparable<? super T>> void sort(T[] a, ForkJoinPool forkJoinPool) {
+		@SuppressWarnings("unchecked")
+		T[] helper = (T[])Array.newInstance(a[0].getClass() , a.length);
+		forkJoinPool.invoke(new MergeSortTask<T>(a, helper, 0, a.length-1));
+	}
+	
 	public static <T extends Comparable<? super T>> void sort(T[] a) {
 		@SuppressWarnings("unchecked")
 		T[] helper = (T[])Array.newInstance(a[0].getClass() , a.length);
